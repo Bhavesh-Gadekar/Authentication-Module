@@ -4,10 +4,10 @@ configDotenv();
 
 const SECRET=process.env.SECRET;
 const VerifyUser=(req,res,next)=>{
-
     const  token=req.cookies.token;
     if(!token){
-        res.json("Token not found !!");
+        // res.status(404).json("Token not found !!");
+        res.json("Notoken");
     }
     jwt.verify(token,SECRET,(err,decoded)=>{
         if(err){

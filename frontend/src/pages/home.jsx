@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // axios.defaults.withCredentials=true;
@@ -14,6 +15,17 @@ const Home=()=>{
         })
         .catch(err=>err.message)
     }
+    
+    axios.defaults.withCredentials=true;
+    useEffect(()=>{
+        axios.get("http://localhost:3000/home")
+    .then(response =>{ 
+        if(response.data === "Notoken"){
+            navigate('/login');
+        }
+        console.log(response.data)})
+    .catch(error => console.log(error));
+    },[])
 
     return(
         <>

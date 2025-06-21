@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('/home',VerifyUser,(req,res)=>{
-    res.json({ message: "You are verified!" });s
+    res.json("You are verified !!")
 });
 
 app.post('/api/login',login);
